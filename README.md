@@ -1,4 +1,4 @@
-# _Sample project_
+# _TEST ME817EV ON ESP32-S3_
 
 (See the README.md file in the upper level 'examples' directory for more information about examples.)
 
