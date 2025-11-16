@@ -51,6 +51,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "driver/spi_master.h"
 #include "driver/gpio.h"
 #include "freertos/task.h"
+#include "esp_log.h"
 
 /* you may define these in your build-environment to use different settings */
 #if !defined (EVE_CS)
@@ -121,7 +122,8 @@ static inline void spi_transmit(uint8_t data)
     trans.rxlength = 0;
     trans.flags = SPI_TRANS_USE_TXDATA;
     trans.tx_data[0U] = data;
-    spi_device_polling_transmit(EVE_spi_device_simple, &trans);
+    int ret = spi_device_polling_transmit(EVE_spi_device_simple, &trans);
+    ESP_LOGI("SPI","ret transmit: %d", ret);
 }
 
 static inline void spi_transmit_32(uint32_t data)
